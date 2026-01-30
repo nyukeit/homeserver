@@ -1,0 +1,9 @@
+data/adguard
+data/caddy
+data/immich/postgres
+data/immich/library/thumbs
+data/immich/library/encoded-video
+data/immich/library/.immich
+data/**/cache
+data/**/logs
+data/**/tmp

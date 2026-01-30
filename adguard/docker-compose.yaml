@@ -1,0 +1,19 @@
+services:
+  adguard:
+    image: adguard/adguardhome
+    container_name: adguardhome
+    volumes:
+      - ${CONFIG_DIR}:/opt/adguardhome/conf
+      - ${WORK_DIR}:/opt/adguardhome/work
+    ports:
+      # Expose port 80 to the host if not using a reverse proxy
+      - "53:53/tcp"
+      - "53:53/udp"
+      - ${HOST_PORT}:80
+    restart: unless-stopped
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true 

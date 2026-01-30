@@ -1,0 +1,30 @@
+services:
+    tinyauth:
+        image: ghcr.io/steveiliop56/tinyauth:v4
+        container_name: tinyauth
+        env_file: .env
+        environment:
+            # Core
+            - APP_URL=${TINYAUTH_APP_URL}
+            - USERS=${TINYAUTH_AUTH_USERS}
+            - OAUTH_AUTO_REDIRECT=${TINYAUTH_OAUTH_AUTO_REDIRECT}
+            - OAUTH_WHITELIST=${TINYAUTH_OAUTH_WHITELIST}
+            - LOG_LEVEL=${LOG_LEVEL}
+
+            # OIDC (Pocket ID)
+            - PROVIDERS_POCKETID_CLIENT_ID=${POCKETID_CLIENT_ID}
+            - PROVIDERS_POCKETID_CLIENT_SECRET=${POCKETID_CLIENT_SECRET}
+            - PROVIDERS_POCKETID_AUTH_URL=${POCKETID_APP_URL}/authorize
+            - PROVIDERS_POCKETID_TOKEN_URL=${POCKETID_APP_URL}/api/oidc/token
+            - PROVIDERS_POCKETID_REDIRECT_URL=${TINYAUTH_APP_URL}/api/oauth/callback/pocketid
+            - PROVIDERS_POCKETID_SCOPES=openid profile email groups
+            - PROVIDERS_POCKETID_USER_INFO_URL=${POCKETID_APP_URL}/api/oidc/userinfo
+            - PROVIDERS_POCKETID_NAME=Pocket ID
+        volumes:
+            - ${TA_DATA_DIR}:/data
+        networks:
+            - proxy
+
+networks:
+    proxy:
+        external: true

@@ -1,0 +1,15 @@
+# Secrets
+.env
+*.env
+
+# Logs
+.log
+*.log
+
+# Runtime
+data/
+postgres/
+redis/
+
+# OS Noise
+.DS_Store

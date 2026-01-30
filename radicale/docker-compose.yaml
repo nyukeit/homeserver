@@ -1,0 +1,17 @@
+services:
+  radicale:
+    image: ghcr.io/kozea/radicale:latest
+    container_name: radicale
+#    ports:
+#      - "5232:5232"
+    volumes:
+      - ${CONFIG_FILE}:/etc/radicale/config:ro
+      - ${DATA_DIR}:/var/lib/radicale
+      - ${USERS_FILE}:/data/users:ro
+    restart: unless-stopped
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

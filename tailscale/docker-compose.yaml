@@ -1,0 +1,20 @@
+services:
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    hostname: homelab
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ${TS_STATE_DIR}:/var/lib/tailscale
+      - ${TS_CERTS_DIR}:/var/lib/tailscale/certs
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    network_mode: host
+
+#networks:
+#  proxy:
+#    external: true

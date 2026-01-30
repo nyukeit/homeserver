@@ -1,0 +1,19 @@
+services:
+    filebrowser:
+        image: filebrowser/filebrowser
+        container_name: filebrowser
+        env_file: .env
+        #        environment:
+        #            - FB_AUTH_METHOD=proxy
+        #            - FB_AUTH_HEADER=Remote-User
+        volumes:
+            - ${FB_MOUNT_PATH1}:/srv
+            - ${FB_DB_DIR}:/database
+            - ${FB_CONFIG_DIR}:/config
+        networks:
+            - proxy
+        restart: unless-stopped
+
+networks:
+    proxy:
+        external: true

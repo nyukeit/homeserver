@@ -1,0 +1,23 @@
+services:
+    caddy:
+        #    image: caddy:2
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: caddy
+        restart: unless-stopped
+        env_file:
+            - .env
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ${CADDYFILE}:/etc/caddy/Caddyfile
+            - ${DATA_DIR}:/data
+            - ${CONFIG_DIR}:/config
+        networks:
+            - proxy
+
+networks:
+    proxy:
+        external: true

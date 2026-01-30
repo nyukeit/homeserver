@@ -1,0 +1,16 @@
+services:
+    pocketid:
+        image: ghcr.io/pocket-id/pocket-id:v2
+        container_name: pocketid
+        restart: unless-stopped
+        env_file: .env
+        volumes:
+            - ${POCKETID_DATA_DIR}:/app/data
+        networks:
+            - proxy
+        ports:
+            - "1411:1411"
+
+networks:
+    proxy:
+        external: true
