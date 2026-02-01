@@ -1,0 +1,16 @@
+services:
+    arcane:
+        image: ghcr.io/getarcaneapp/arcane:latest
+        container_name: arcane
+        env_file: .env
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ${ARCANE_DATA_DIR}:/app/data
+            - ${COMPOSE_PROJECTS_DIR}:/infra
+        restart: unless-stopped
+        networks:
+            - proxy
+
+networks:
+    proxy:
+        external: true
