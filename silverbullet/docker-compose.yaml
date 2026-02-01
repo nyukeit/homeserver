@@ -1,0 +1,14 @@
+services:
+    silverbullet:
+        image: ghcr.io/silverbulletmd/silverbullet:latest
+        container_name: silverbullet
+        restart: unless-stopped
+        env_file: .env
+        volumes:
+            - ${SB_DATA_DIR}:/space
+        networks:
+            - proxy
+
+networks:
+    proxy:
+        external: true
