@@ -6,7 +6,7 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
             - ${ARCANE_DATA_DIR}:/app/data
-            - ${COMPOSE_PROJECTS_DIR}:/infra
+            - ${COMPOSE_PROJECTS_DIR}:${COMPOSE_PROJECTS_DIR}
         restart: unless-stopped
         networks:
             - proxy
