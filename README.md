@@ -1,27 +1,26 @@
-# This is my homelab repo
-This repo serves as a backup for my homelab configuration and docker compose files
+# Nyukeit's Homelab
+This is the official repository of my homelab. It consists of several self-hosted services as can be seen from the code above, which is mostly just Docker Compose files for each service.
 
-## Infrastructure
-### AdGuard Home
-Used for DNS filtering and blocking ads along with OpenWRT on a custom router that sits behind the ISP router for better security.
+## Documentation
+Official private documentation of this homelab can be accessed at [Homelab Wiki](https://docs.nyukeit.com)
+> Note: This documentation is private and is only accessible to authorised users.
 
-### FileBrowser
-Used for browsing and managing files on the headless server using a web interface. Also provides access to my cloud storage, which is cloned onto the server.
+## Caddy Cloudflare Image
+This repo uses a custom built Caddy-Cloudflare DNS image that was built using a Dockerfile. The file can be accessed from `infra/caddy/Dockerfile`. Here is the simple Dockerfile used to be build the image:
 
-### Immich
-Used for managing and organizing photos and videos. It provides a web interface for browsing and searching through the media library.
+```Dockerfile
+FROM caddy:2-builder AS builder
 
-### Portainer
-Used for managing and monitoring Docker containers and services. It provides a web interface for managing and monitoring Docker containers and services.
+RUN xcaddy build \
+    --with github.com/caddy-dns/cloudflare
 
-### NTFY
-Used for sending and receiving notifications. It provides a web interface for sending and receiving notifications.
+FROM caddy:2
 
-### Caddy
-Used for reverse proxying services. Remove reliance on port forwarding.
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+```
 
-### Homepage
-Used for consolidating information about the homelab infrastructure and services. Also provides running and health status of the services.
+The image can be accessed from here:
+`ghcr.io/nyukeit/caddy-cloudflare:latest`
 
 ## Backup
 We use a combination of tools to ensure data integrity and availability. Here's an overview of our backup strategy:
