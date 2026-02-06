@@ -1,0 +1,14 @@
+services:
+    tasktrove:
+        image: ghcr.io/dohsimpson/tasktrove:latest
+        container_name: tasktrove
+        env_file: .env
+        volumes:
+            - ${TASKTROVE_DATA_DIR}:/app/data
+        networks:
+            - proxy
+        restart: unless-stopped
+
+networks:
+    proxy:
+        external: true
