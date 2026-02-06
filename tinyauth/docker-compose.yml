@@ -2,7 +2,6 @@ services:
     tinyauth:
         image: ghcr.io/steveiliop56/tinyauth:v4
         container_name: tinyauth
-        env_file: .env
         environment:
             # Core
             - APP_URL=${TINYAUTH_APP_URL}
@@ -22,6 +21,7 @@ services:
             - PROVIDERS_POCKETID_NAME=Pocket ID
         volumes:
             - ${TA_DATA_DIR}:/data
+        restart: unless-stopped
         networks:
             - proxy
 
