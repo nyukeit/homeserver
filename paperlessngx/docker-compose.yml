@@ -1,0 +1,30 @@
+services:
+    pngx-broker:
+        image: docker.io/library/redis:8
+        container_name: pngx-redis
+        volumes:
+            - ${PAPERLESS_DIR}/redis:/data
+        restart: unless-stopped
+        networks:
+            - proxy
+
+    pngx-webserver:
+        image: ghcr.io/paperless-ngx/paperless-ngx:latest
+        container_name: pngx-server
+        depends_on:
+            - pngx-broker
+        env_file: .env
+        environment:
+            - PAPERLESS_REDIS=redis://pngx-broker:6379
+        volumes:
+            - ${PAPERLESS_DIR}/data:/usr/src/paperless/data
+            - ${PAPERLESS_DIR}/media:/usr/src/paperless/media
+            - ${PAPERLESS_DIR}/export:/usr/src/paperless/export
+            - ${PAPERLESS_DIR}/consume:/usr/src/paperless/consume
+        restart: unless-stopped
+        networks:
+            - proxy
+
+networks:
+    proxy:
+        external: true
