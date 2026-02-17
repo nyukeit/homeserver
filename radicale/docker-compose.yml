@@ -6,6 +6,7 @@ services:
             - ${CONFIG_FILE}:/etc/radicale/config:ro
             - ${DATA_DIR}:/var/lib/radicale
             - ${USERS_FILE}:/data/users:ro
+            - ${RIGHTS_FILE}:/app/rights
         restart: unless-stopped
         networks:
             - proxy
