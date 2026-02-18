@@ -1,0 +1,7 @@
+# Immich Server - Photo backup service
+# This site is served via Cloudflare Tunnel
+
+# Immich
+http://photos.nyukeit.com {
+	reverse_proxy immich_server:2283
+}

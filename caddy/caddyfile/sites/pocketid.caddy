@@ -1,0 +1,6 @@
+# Pocket ID
+# This site is served via CloudFlare Tunnel
+
+http://id.nyukeit.com {
+    reverse_proxy pocketid:1411
+}

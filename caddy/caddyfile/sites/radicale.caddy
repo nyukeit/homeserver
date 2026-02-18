@@ -1,0 +1,7 @@
+# Radicale - Calendar, Tasks and Contacts server
+# This site is served via Cloudflare Tunnel
+
+# Radicale
+http://calendar.nyukeit.com {
+	reverse_proxy radicale:5232
+}

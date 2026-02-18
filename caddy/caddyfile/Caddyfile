@@ -1,0 +1,8 @@
+# Root Caddyfile
+{
+    auto_https disable_redirects
+    email nyukeit@proton.me
+}
+
+import snippets/*.caddy
+import sites/*.caddy
