@@ -1,0 +1,7 @@
+# Arcane (internal only)
+# This site is served via Tailscale
+
+infra.nyukeit.com {
+    import cloudflare
+    reverse_proxy arcane:3552
+}

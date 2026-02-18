@@ -1,0 +1,7 @@
+# Use DNS-01 Challenge via Cloudflare for internal services
+
+(cloudflare) {
+    tls {
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+}

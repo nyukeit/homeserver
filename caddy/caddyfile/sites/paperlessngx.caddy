@@ -1,0 +1,7 @@
+# Paperless NGX - Document Management Server
+# This site is served via Tailscale
+
+docs.nyukeit.com {
+    import cloudflare
+    reverse_proxy pngx-server:8000
+}

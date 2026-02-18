@@ -9,7 +9,7 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - ${CADDYFILE}:/etc/caddy/Caddyfile
+            - ${CADDYFILE}:/etc/caddy/
             - ${DATA_DIR}:/data
             - ${CONFIG_DIR}:/config
         networks:

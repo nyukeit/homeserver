@@ -1,0 +1,8 @@
+# Tinyauth Forwarder
+
+(tinyauth) {
+    forward_auth tinyauth:3000 {
+        uri /api/auth/caddy
+        copy_headers Remote-User
+    }
+}
