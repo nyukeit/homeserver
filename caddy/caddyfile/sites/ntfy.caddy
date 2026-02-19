@@ -2,6 +2,6 @@
 # This site is served via Cloudflare Tunnel
 
 # Notifications via NTFY
-http://ntfy.nyukeit.com {
+http://ntfy.{$BASE_URL} {
 	reverse_proxy ntfy:80
 }

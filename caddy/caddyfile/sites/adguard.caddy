@@ -1,7 +1,7 @@
 # AdGuard Home (internal only)
 # This site is served via Tailscale
 
-adguard.nyukeit.com {
+adguard.{$BASE_URL} {
     import cloudflare
     reverse_proxy adguardhome:80
 }

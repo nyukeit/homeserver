@@ -1,7 +1,7 @@
 # Vaultwarden - Password Manager
 # This site is served via Cloudflare Tunnel
 
-http://vault.nyukeit.com {
+http://vault.{$BASE_URL} {
     reverse_proxy vaultwarden:80 {
         header_up X-Real-IP {http.request.header.Cf-Connecting-Ip}
     }
