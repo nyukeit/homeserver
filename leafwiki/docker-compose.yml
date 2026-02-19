@@ -1,0 +1,17 @@
+services:
+    leafwiki:
+        image: ghcr.io/perber/leafwiki:latest
+        container_name: leafwiki
+        environment:
+            - LEAFWIKI_ADMIN_PASSWORD=${ADMIN_PASSWORD}
+            - LEAFWIKI_JWT_SECRET=${JWT_SECRET}
+            - LEAFWIKI_PUBLIC_ACCESS=true
+        volumes:
+            - ${LEAFWIKI_DATA_DIR}:/app/data
+        restart: unless-stopped
+        networks:
+            - proxy
+
+networks:
+    proxy:
+        external: true

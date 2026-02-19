@@ -1,0 +1,7 @@
+# Leafwiki
+# This site is served via Tailscale
+
+wiki.{$BASE_URL} {
+    import cloudflare
+    reverse_proxy leafwiki:8080
+}
