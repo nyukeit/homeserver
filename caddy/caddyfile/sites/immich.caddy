@@ -2,6 +2,6 @@
 # This site is served via Cloudflare Tunnel
 
 # Immich
-http://photos.nyukeit.com {
+http://photos.{$BASE_URL} {
 	reverse_proxy immich_server:2283
 }

@@ -1,6 +1,6 @@
 # Tinyauth
 # This site is only available via Tailscale
 
-http://auth.nyukeit.com {
+http://auth.{$BASE_URL} {
     reverse_proxy tinyauth:3000
 }

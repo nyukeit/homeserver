@@ -5,6 +5,7 @@ services:
         restart: unless-stopped
         environment:
             - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
+            - BASE_URL=${BASE_URL}
         ports:
             - "80:80"
             - "443:443"
